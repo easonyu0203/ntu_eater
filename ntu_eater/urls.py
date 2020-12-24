@@ -6,5 +6,5 @@ from frontend.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
 	path('api/', include('restaurants.urls')),
-	path('', index),
+	path('', index, name='frontend'),
 ]

@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Restaurant
-from .serializers import RestaurantsSerialer
-from rest_framework import generics
+from .models import Restaurant, RestaurantImage
+from .serializers import RestaurantSerialer, RestaurantImageSerialer
+from rest_framework import generics, viewsets
 
 
-class RestaurantListCreate(generics.ListCreateAPIView):
+class RestaurantViewSet(viewsets.ModelViewSet):
 	queryset = Restaurant.objects.all()
-	serializer_class = RestaurantsSerialer
+	serializer_class = RestaurantSerialer
 
-class RestaurantRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-	queryset = Restaurant.objects.all()
-	serializer_class = RestaurantsSerialer
+
+class RestaurantImageViewSet(viewsets.ModelViewSet):
+	queryset = RestaurantImage.objects.all()
+	serializer_class = RestaurantImageSerialer
+
